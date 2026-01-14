@@ -22,10 +22,10 @@ Les cours ont lieu de 13h30 à 16h30 en Salle Bourbaki selon le calendrier suiva
 | 19 février | Analyse | |
 | 10 mars | *à décider* | |
 | 12 mars | **examen** | | Examen écrit de 2h
-| 24 mars | séminaire étudiants | |
 | 31 mars | séminaire étudiants | |
 | 7 avril | séminaire étudiants | |
 | 14 avril | séminaire étudiants | |
+| 21 avril | séminaire étudiants | |
 
 
 # Références 
