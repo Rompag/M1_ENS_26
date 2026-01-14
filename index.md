@@ -11,7 +11,7 @@ Le cours est assuré par [Filippo A. E. Nuccio](https://perso.univ-st-etienne.fr
 Chaque cours vient avec un fichier `.md` (exporté en `.pdf` aussi) que vous trouvez plus bas et qui contient le matériel discuté, ainsi qu'avec un fichier `.lean` à utiliser pendant le cours. Les solutions sont rajoutées le lendemain du cours, en général.
 
 # Agenda
-Les cours ont lieu de 13h30 à 16h30  selon le calendrier suivant:
+Les cours ont lieu de 13h30 à 16h30 en Salle Bourbaki selon le calendrier suivant:
 
 | Date      | Cours         | Fichiers annexes | Notes
 |-----------|---------------|---------------|---------------
@@ -39,7 +39,7 @@ Pour tout ce qui concerne la "théorie des types" qu'on utilise, une jolie intro
 Une source plus complète, très bien écrite et fort agréable à lire est
 * [Lectures on the Curry–Howard Isomorphism](https://www.sciencedirect.com/bookseries/studies-in-logic-and-the-foundations-of-mathematics/vol/149/suppl/C), par M. H. Sørensen et P. Urzyczyn.
 
- Les deux références sont
+ Les deux références
 * [Theorem Proving in Lean 4](https://leanprover.github.io/theorem_proving_in_lean4/), par J. Avigad, L. de Moura, S. Kong et S. Ullrich
 * [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/), par J. Avigad et P. Massot
 contiennent aussi beaucoup de matériel pertinent pour notre cours.
