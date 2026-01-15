@@ -1,7 +1,7 @@
 ---
 # layout: default
 # the two items below are only used for `OnlyTheDoc`
-title: "Introduction à la Formalisation Mathématique"
+title: "Le cours"
 # nav_order: 1
 ---
 

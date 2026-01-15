@@ -65,6 +65,17 @@ theorem exists_p_gt_100 (E : Euclid_forall) : ∃ p, Nat.Prime p ∧ 100 < p := 
   exact E
   -- exact E 100
 
+example : ∃ x : ℝ, Real.sin x = 0 := by
+  use 0
+  exact Real.sin_zero
+
+open Function in
+example (f : ℝ → ℝ) (h : ∀ x, ∃ y, x = f y) : Surjective f := by
+  intro x
+  obtain ⟨y, hy⟩ := h x
+  use y
+  exact hy.symm
+
 -- `⌘`
 
 /- # False, negation, contradiction -/
