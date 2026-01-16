@@ -1,8 +1,9 @@
 ---
 # layout: default
 # the two items below are only used for `OnlyTheDoc`
-title: "Cours Avancé *Formalisation Mathématique*"
+# title: "Cours Avancé *Formalisation Mathématique*"
 # nav_order: 1
+nav_exclude: true
 ---
 
 # Bienvenue

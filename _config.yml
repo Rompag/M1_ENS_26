@@ -1,4 +1,4 @@
-title: 
+title: ""
 description: ""
 url: https://faenuccio-teaching.github.io
 baseurl: "/M1_ENS_26"
@@ -17,9 +17,7 @@ show_downloads: true
 nav:
   - title: Home
     url: /
-  - title: Documentation
-    url: /docs/
-  - title: Prérequis Lean et GitHub
-    url: /index.html#prerequis-lean-et-github
+  - title: Agenda
+    url: /#agenda
   - title: GitHub
     url: https://github.com/faenuccio-teaching/M1_ENS_26
