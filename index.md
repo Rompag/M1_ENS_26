@@ -14,6 +14,8 @@ Le cours est assuré par [Filippo A. E. Nuccio](https://perso.univ-st-etienne.fr
 
 Chaque cours vient avec un fichier `.md` (exporté en `.pdf` aussi) que vous trouvez plus bas et qui contient le matériel discuté, ainsi qu'avec un fichier `.lean` à utiliser pendant le cours. Les solutions sont rajoutées le lendemain du cours, en général.
 
+Le `commit` de Mathlib sur lequel ce projet a été développé est le [32d2424](https://github.com/leanprover-community/mathlib4/commits/32d24245c7a12ded17325299fd41d412022cd3fe): la documentation correspondante se trouve [ici](https://faenuccio-teaching.github.io/ENS_26/docs/).
+
 # Agenda
 Les cours ont lieu de 13h30 à 16h30 en Salle Bourbaki selon le calendrier suivant:
 

@@ -1,6 +1,6 @@
----
+<!-- ---
 nav_exclude: true
----
+--- -->
 
 # More on Types
 
