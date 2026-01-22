@@ -174,7 +174,9 @@ example : (Subgroup.center G).Normal := by
 
 -- `⌘`
 
-example (N : Subgroup G) [N.Normal] (x y : G) : (x : G ⧸ N) = (y : G ⧸ N) ↔ x * y⁻¹ ∈ N := sorry
+example (N : Subgroup G) [N.Normal] (x y : G) : (x : G ⧸ N) = (y : G ⧸ N) ↔ x * y⁻¹ ∈ N := by
+  refine ⟨fun h ↦ ?_, fun h ↦ ?_⟩
+  · simp
 
 
 -- ### Group homomorphisms
