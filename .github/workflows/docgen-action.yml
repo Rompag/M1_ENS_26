@@ -32,11 +32,15 @@ jobs:
           build-page: false
           # blueprint: true
     
-      - name: Commit generated docs
+      - name: Commit changes
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-          git add docbuild/.lake/build/doc
-          git commit -m "Update Lean documentation" || echo "No changes to commit"
-          git push
+          git status
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git add .
+            git commit -m "Auto update"
+            git push
+          else
+            echo "No changes to commit, skipping push"
+          fi
