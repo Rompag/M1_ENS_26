@@ -23,7 +23,7 @@ Les cours ont lieu de 13h30 à 16h30 en Salle Bourbaki selon le calendrier suiva
 |-----------|---------------|---------------|---------------
 | 3 février | Tactiques et Types | [Fichier Lean](https://github.com/faenuccio-teaching/M1_ENS_26/blob/master/M1ENS26/1_Tactics%26Types.lean) et [MarkDown](https://github.com/faenuccio-teaching/M1_ENS_26/blob/master/M1ENS26/1_Tactics%26Types_lecture.md)|
 | 5 février | Types (2) | [Fichier Lean](https://github.com/faenuccio-teaching/M1_ENS_26/blob/master/M1ENS26/2_MoreTypes.lean) et [MarkDown](https://github.com/faenuccio-teaching/M1_ENS_26/blob/master/M1ENS26/2_MoreTypes_lecture.md)|
-| 10 février | Algèbre | |
+| 10 février | Algèbre | [Fichier Lean](https://github.com/faenuccio-teaching/M1_ENS_26/blob/master/M1ENS26/3_AlgebraicStructures.lean) et [MarkDown](https://github.com/faenuccio-teaching/M1_ENS_26/blob/master/M1ENS26/3_AlgebraicStructures_lecture.md)|
 | 17 février | Topologie | |
 | 19 février | Analyse | |
 | 10 mars | *à décider* | |

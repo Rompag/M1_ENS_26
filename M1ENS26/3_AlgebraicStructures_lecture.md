@@ -118,10 +118,12 @@ structure Subgroup (G : Type*) [Group G] extends Submonoid G : Type* where
 We'll discuss what "sets" are next time, but for now just record that given any type `G : Type*`, 
 and any set `S : Set G`, we obtain for every `g : G` the type (of kind `Prop`) `g ∈ S`, that can be either true or false.
 
-Observe in particular, as we've discussed for monoids, that "being a subgroup" is not a `Prop`-like
+Exactly as we've discussed for monoids, that "being a subgroup" is not a `Prop`-like
 notion: the perspective is that, to each group `G`, we attach a new *type* `Subgroup G` whose terms
 represent the different subgroups of `G`, seen as an underlying set and a collection of proofs that
 the set is multiplicatively closed (a "mixin").
+
+Finally, the type `Subgroup G` is ordered, and `{1} : Subgroup G` is actually `⊥` (the bottom element, written `\bot`) whereas `G : Subgroup G` is `⊤` (the top element, written `\top`).
 
 `⌘`
 
@@ -203,23 +205,19 @@ As for groups, the way to say that `R` is a ring is to type
 
 The library is particularly rich insofar as *commutative* rings are concerned, and we're going to stick to those in our course.
 
-* The tactic `ring` solves claim about basic relations in commutative rings.
-* The tactic `grind` is much more powerful (but it oten calls the axiom of choice for no good reason: we won't care): beyond what `ring` can do, it also treats inequalities, 
+* The tactic `ring` solves claim about basic relations in commutative rings, namely those that hold in *free* rings.
+* The tactic `grind` is much more powerful (but it oten calls the axiom of choice for no good reason: we won't care): beyond what `ring` can do, it also treats inequalities, logical connectives, local assumptions, etc.
 
 Given what we know about groups and monoids, we can expect a commutative ring to have several "weaker" structures: typically these can be accessed through a `.toWeakStructure` projection.
 
 
-### Morphisms and Ideals
+### Morphisms, Ideals and Quotients.
 
-* Morphisms work as for groups: they are simply functions respecting both structures on a ring, that of a multiplicative monoid and of an additive group: so, they're simply respecting both monoid structures, hence the notation `R →+* S` for a ring homomorphism. Of course, `≃+*` denotes ring isomorphism, so `R ≃+* S` is the type of all ring homomorphisms from `R` to `S`.
+* Morphisms work as for groups: they are functions respecting both structures on a ring, that of a multiplicative monoid and of an additive group: so, they're respecting both monoid structures, hence the notation `R →+* S` for a ring homomorphism. Of course, `≃+*` denotes ring isomorphism, so `R ≃+* S` is the type of all ring homomorphisms from `R` to `S`.
 
-* Ideals 
+* In the usual spirit of working in the greatest possible generality, `I : Ideal R` means `I : Submodule R R`.
 
-They're defined building upon the overarching structure of `Module`s, but it won't matter for us. Suffices it to say that in the following setting
-
-        example (R : Type*) [CommRing R] (I : Ideal R)
-
-the type `Ideal R` consists of all ideals `I ⊆ R`; hence, a term `I : Ideal R` is such that
+Concretely, a term `I : Ideal R` is such that
 
         | I.carrier : Set R
         | I.zero_mem : (0 : R) ∈ I
@@ -234,7 +232,16 @@ or
 
         I.mul_mem_right (a b : R) : a ∈ I → a * b ∈ I
 
-As for subgroups, the type `Ideal R` is ordered, and the ideal `{0} : Ideal R` is actually `⊥` whereas
-`R : Ideal R` is `⊤`.
+As for subgroups, the type `Ideal R` is ordered, with `⊥ = {0} : Ideal R` and `⊤ = R : Ideal R`.
+
+* The discussion about quotient rings is analogous to the one for quotient groups, through the *same* setoid structure (called `Submodule.quotientRel`)
+```
+@[to_additive]
+def leftRel (s : Subgroup α) : Setoid α := MulAction.orbitRel s.op α
+```
+where `to_additive` fires, becoming `fun x y ↦ x - y ∈ I.toAddSubgroup`.
+
+As for groups, it is often better to replace `Quotient.mk (Submodule.quotientRel I)` by 
+`Ideal.Quotient.mk I : R →+* R ⧸ I`.
 
 `⌘`
