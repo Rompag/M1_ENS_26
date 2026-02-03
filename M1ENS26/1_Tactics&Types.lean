@@ -141,56 +141,91 @@ example : True := by
 -- Modus Ponens: if `P → Q` then `Q` can be deduced from `P`
 -- **Exercise**
 example : P → (P → Q) → Q := by
-  sorry
-
+  intro h
+  intro H
+  apply H
+  exact h
 
 -- Transitivity of `→`
 -- **Exercise**
 example : (P → Q) → (Q → R) → P → R := by
-  sorry
+  intro h1
+  intro h2
+  intro hP
+  apply h2 (h1 hP)
+
 
 -- **Exercise**
 example (hP : P) : Q → (hP = hP) := by
-  sorry
+  intro hQ
+  rfl
 
 -- **Exercise**
 example (hP : P) : R → P → Q → (hP = hP) := by
-  sorry
+  intro hR
+  intro hP
+  intro hQ
+  rfl
 
 -- **Exercise**
 example (n : ℕ) (h : n = 5) : n = 2 + 3 := by
-  sorry
+  rw [h]
 
 -- **Exercise**
 example (n m : ℕ) (hn : n = 5) (hm : 11 = m) : m = n + 6 := by
-  sorry
+  rw [hn]
+  rw [← hm]
 
 -- **Exercise**
 example (α : Type) (a b c : α) (H : (a = b) → P ) (h1 : c = a) (h2 : b = c) : P := by
-  sorry
+  apply H
+  rw [h2]
+  rw [h1]
 
 -- **Exercise**
 example : P ∧ Q → Q := by
-  sorry
+  intro h
+  exact h.right
 
 -- **Exercise**
 example : (P → Q → R) → P ∧ Q → R := by
-  sorry
+  intro h
+  intro hP
+  apply h hP.left
+  exact hP.right
 
 -- `∧` is symmetric
 -- **Exercise**
 example : P ∧ Q → Q ∧ P := by
-  sorry
+  intro h
+  constructor
+  · exact h.right
+  · exact h.left
 
 
 -- `∧` is transitive
 -- **Exercise**
 example : P ∧ Q → Q ∧ R → P ∧ R := by
-  sorry
+  intro h H
+  constructor
+  · exact h.left
+  exact H.right
+
+/- The result of `cases` can be given explicit names, by using `rcases ? with ?1 | ?h2 `-/
+example : P ∨ Q → (P → R) → (Q → R) → R := by
+  intro h
+  rcases h with hP | hQ
+  · intro h2
+    intro h3
+    apply h2 hP
+  · intro h2
+    intro h3
+    exact h3 hQ
 
 -- **Exercise**
 example : False → P ∧ False := by
-  sorry
+  intro h
+  cases h -- nothing to prove
 
 -- **Exercise**
 example : (P ∧ Q → R) → P → Q → R := by
