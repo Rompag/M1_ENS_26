@@ -23,7 +23,7 @@ Proving `P : Prop` boils down to producing a/the term `hp : P`.
 
 This is typically done by
 1. Finding somewhere a *true* proposition `Q` and a term `hq : Q`;
-1. Producing a function `f : P → Q` ("an implication");
+1. Producing a function `f : Q → P` ("an implication");
 1. Defining `hp := f hq`.
 
 This is often painful: to simplify our life, or to build more convoluted implications, we use *tactics*.
@@ -34,7 +34,7 @@ This is often painful: to simplify our life, or to build more convoluted implica
 * `apply` is the crucial swiss-knife for *backwards reasoning*: in a situation like
 ```
   hq : Q
-  f : P → Q
+  f : Q → P
   ⊢ P
 ```
 we are done because we can use `f` to reduce, or back-track, the truth of `P` to that of `Q`, that we know (it is `hq`).  
