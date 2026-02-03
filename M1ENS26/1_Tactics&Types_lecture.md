@@ -103,11 +103,11 @@ Given some term `t` we can ask Lean what its type is with the command
 +++ Sets = Types?
 **No!** Of course, you can bring over some intuition from basic set-theory, but **every term has a unique type**.
 
-So,
+So, if you encounter
 
-    t : T ∧ t : S
+    t : T, t : S
 
-is certainly *false*, unless `T = S`. In particular, `1 : ℕ` and `1 : ℤ` shows that the two `1`'s above are **different**.
+there is certainly a problem, unless `T = S`. In particular, `1 : ℕ` and `1 : ℤ` shows that the two `1`'s are **different**.
 
 `⌘`
 
@@ -115,7 +115,9 @@ is certainly *false*, unless `T = S`. In particular, `1 : ℕ` and `1 : ℤ` sho
 
 ### `Prop`
 
-There is one kind of particular types, called *propositions*. This class is denoted `Prop`.
+There is one kind of particular types, called *propositions* and denoted `Prop`. 
+
+Types in it contain *either one term, or no term at all*.
 
 
 Types of kind `Prop` represent propositions (that can be either true or false). So, `(2 < 3) : Prop` and `(37 < 1) : Prop` are two *types* in this class, as is `(A finite group of order 11 is cyclic)`.
