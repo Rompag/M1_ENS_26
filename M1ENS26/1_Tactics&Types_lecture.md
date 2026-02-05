@@ -23,7 +23,7 @@ Proving `P : Prop` boils down to producing a/the term `hp : P`.
 
 This is typically done by
 1. Finding somewhere a *true* proposition `Q` and a term `hq : Q`;
-1. Producing a function `f : P → Q` ("an implication");
+1. Producing a function `f : Q → P` ("an implication");
 1. Defining `hp := f hq`.
 
 This is often painful: to simplify our life, or to build more convoluted implications, we use *tactics*.
@@ -32,16 +32,14 @@ This is often painful: to simplify our life, or to build more convoluted implica
 * Given a term `hq : Q` and a goal `⊢ Q`, the tactic `exact hq` closes the goal, instructing Lean to use `hq` as the sought-for term in `Q`.
 
 * `apply` is the crucial swiss-knife for *backwards reasoning*: in a situation like
+```
+  hq : Q
+  f : Q → P
+  ⊢ P
+```
+we are done because we can use `f` to reduce, or back-track, the truth of `P` to that of `Q`, that we know (it is `hq`).  
 
-`⌘`
-
-* Given an implication `P → Q`, the tactic `intro hp` introduces a term `hp : P`.
-    ```
-    hpq : P → Q
-    ⊢ Q
-    ```
-
-the tactic `apply hpq` changes the goal to `⊢ P`: it tells Lean that, granted `hpq` (or "having `hpq` at our disposal"), it suffices to construct a term in `P` to deduce a term in `Q`.
+* When wanting to prove an implication `P → Q`, the tactic `intro hp` introduces a term `hp : P`: after all, an implication *is* a function, and to define it you give yourself a "generic element in the domain".
 
 
 * If your goal is `a = a`, the tactic `rfl` closes it.
@@ -78,7 +76,7 @@ For both logical connectors, there are two use-cases: we might want to *prove* a
 +++
 
 +++ `by_cases`
-The `by_cases` tactic, **not to be confused with** `cases`, creates two subgoals: one assuming a premise, and the one assuming its negation.
+The `by_cases` tactic, **not to be confused with** `cases`, creates two subgoals: one assuming a premise, and one assuming its negation.
 
 
 `⌘`
@@ -105,11 +103,11 @@ Given some term `t` we can ask Lean what its type is with the command
 +++ Sets = Types?
 **No!** Of course, you can bring over some intuition from basic set-theory, but **every term has a unique type**.
 
-So,
+So, if you encounter
 
-    t : T ∧ t : S
+    t : T, t : S
 
-is certainly *false*, unless `T = S`. In particular, `1 : ℕ` and `1 : ℤ` shows that the two `1`'s above are **different**.
+there is certainly a problem, unless `T = S`. In particular, `1 : ℕ` and `1 : ℤ` shows that the two `1`'s are **different**.
 
 `⌘`
 
@@ -117,14 +115,17 @@ is certainly *false*, unless `T = S`. In particular, `1 : ℕ` and `1 : ℤ` sho
 
 ### `Prop`
 
-There is one kind of particular types, called *propositions*. This class is denoted `Prop`.
+There is one kind of particular types, called *propositions* and denoted `Prop`. 
+
+Types in it contain *either one term, or no term at all*.
 
 
 Types of kind `Prop` represent propositions (that can be either true or false). So, `(2 < 3) : Prop` and `(37 < 1) : Prop` are two *types* in this class, as is `(A finite group of order 11 is cyclic)`.
 
 +++ `True`,  `False` and `Bool`
-Fundamentally, `Prop` contains only two types:
-`True : Prop` is a type whose only term is called `trivial`. To prove `True`, you can do `exact trivial`.
+Fundamentally, `Prop` contains only two types: `True` and `False`.
+
+* `True : Prop` is a type whose only term is called `trivial`. To prove `True`, you can do `exact trivial`.
 
 * `False` has no term. Typically, you do not want to construct terms there...
 * `Bool` is a different type, that contains two *terms*: `true` and `false` (beware the capitalization!).
@@ -136,4 +137,6 @@ Fundamentally, `Prop` contains only two types:
 
 #### Key points to keep in mind
 * If `P : Prop` then either `P` has not term at all ("`P` is false"), or `P` has a unique term `hp` (`hp` is "a witness that `P` is true"; or a **proof** of `P`).
-* As well `ℕ` as `3 < -1` as `ℝℙ²` and `(a+b)² = a² + 2ab + b²` are types, although of different flavour.
+* Both `ℕ` and `3 < -1` and `ℝℙ²` and `(a+b)² = a² + 2ab + b²` are types, although of different flavour.
+
+`⌘ → Exercises`
